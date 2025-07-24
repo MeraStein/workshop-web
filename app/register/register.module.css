@@ -44,6 +44,7 @@
 /* שדות קלט */
 .form input {
   padding: 0.7rem;
+  background-color: #fff4ec;
   border: 2px solid #ffd3b6;
   border-radius: 10px;
   font-size: 1rem;
@@ -52,7 +53,7 @@
 }
 
 .form input:focus {
-  border-color: #ff6f61;
+  border-color: #f5aba4;
   outline: none;
   box-shadow: 0 0 8px rgba(255, 111, 97, 0.4);
 }
