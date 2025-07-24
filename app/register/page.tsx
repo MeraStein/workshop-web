@@ -43,7 +43,7 @@ export default function RegisterPage() {
 
   return (
     <main className={styles.container}>
-      <h1 className={styles.title}>טופס הרשמה לסדנת פיתוח תוכנה לילדים 🐍</h1>
+      <h1 className={styles.title}>ליצירת קשר🐍</h1>
       <p className={styles.subtitle}>מלאו את הפרטים ונחזור אליכם בהקדם</p>
 
       {submitted ? (
@@ -53,6 +53,7 @@ export default function RegisterPage() {
       ) : (
         <form onSubmit={handleSubmit} className={styles.form}>
           <label>
+            <span/>*
             שם מלא:
             <input
               type="text"
@@ -70,11 +71,11 @@ export default function RegisterPage() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
             />
           </label>
 
           <label>
+            <span/>*
             טלפון:
             <input
               type="tel"

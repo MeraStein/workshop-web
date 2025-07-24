@@ -51,7 +51,7 @@ export default function Home() {
       </section>
 
        <div className={styles.cta}>
-          <button onClick={handleRegisterClick}>📩 אני רוצה להירשם!</button>
+          <button onClick={handleRegisterClick}>📩 רוצה שנחזור אליכם?</button>
         </div>
 
       <footer className={styles.footer}>

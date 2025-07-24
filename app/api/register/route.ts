@@ -6,14 +6,13 @@ export async function POST(request: Request) {
 
     const { name, email, phone } = data;
 
-    // בדיקות בסיסיות
-    if (!name || !email || !phone) {
+    if (!name || !phone) {
       return NextResponse.json({ message: "נא למלא את כל השדות" }, { status: 400 });
     }
 
     // כאן תוכלי להוסיף לוגיקה לשליחת המייל או שמירה בבסיס נתונים
 
-    console.log("הרשמה חדשה:", data); // להדפיס לשרת לבדיקה
+    console.log("הרשמה חדשה:", data); 
 
     return NextResponse.json({ message: "ההרשמה התקבלה בהצלחה" }, { status: 200 });
   } catch (error) {
