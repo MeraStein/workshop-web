@@ -12,19 +12,38 @@ export default function RegisterPage() {
 
   const [submitted, setSubmitted] = useState(false);
 
+  const [error, setError] = useState("");
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // כאן אפשר להוסיף שליחה לשרת או API
-    setSubmitted(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.message || "שגיאה בשליחת הטופס");
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message);
+    }
+    
   };
 
   return (
     <main className={styles.container}>
-      <h1 className={styles.title}>טופס הרשמה לסדנת פייתון לילדים 🐍</h1>
+      <h1 className={styles.title}>טופס הרשמה לסדנת פיתוח תוכנה לילדים 🐍</h1>
       <p className={styles.subtitle}>מלאו את הפרטים ונחזור אליכם בהקדם</p>
 
       {submitted ? (

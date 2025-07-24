@@ -33,12 +33,23 @@
 }
 
 .section {
-  background: #fff9f2;
-  margin: 20px auto;
-  max-width: 700px;
-  border-radius: 16px;
-  padding: 30px 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: #fff9f2;
+    margin: 20px auto;
+    max-width: 50em;
+    border-radius: 16px;
+    padding: 30px 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+@media (max-width: 768px) {
+  .section {
+    background: #fff9f2;
+    margin: 20px auto;
+    max-width: 22em;
+    border-radius: 16px;
+    padding: 30px 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .section h2 {
