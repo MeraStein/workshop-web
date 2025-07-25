@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     `;
 
     return NextResponse.json({ success: true, message: 'נשמר בהצלחה' });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('DB ERROR:', err);
     return NextResponse.json(
       { success: false, message: 'שגיאה בשליחת הנתונים' },
