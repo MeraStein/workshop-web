@@ -34,8 +34,8 @@ export default function RegisterPage() {
       }
 
       setSubmitted(true);
-    } catch (err: any) {
-      setError(err.message || "שגיאה בשליחת הנתונים");
+    } catch (err: unknown) {
+      setError("שגיאה בשליחת הנתונים");
     }
   };
 
