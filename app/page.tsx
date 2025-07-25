@@ -19,7 +19,6 @@ export default function Home() {
       </header>
 
       <div className={styles.hero}>
-        {/* אפשר לשים כאן תמונה או איור */}
         <img 
           src="https://img.freepik.com/premium-vector/illustration-student-activity_1368420-4108.jpg?semt=ais_hybrid&w=740"
           alt="ילדים לומדים קוד"

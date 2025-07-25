@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./register.module.css"; 
+import styles from "./register.module.css";
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -9,9 +9,7 @@ export default function RegisterPage() {
     email: "",
     phone: "",
   });
-
   const [submitted, setSubmitted] = useState(false);
-
   const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,26 +27,21 @@ export default function RegisterPage() {
         body: JSON.stringify(formData),
       });
 
+      const data = await res.json();
+
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.message || "שגיאה בשליחת הטופס");
+        throw new Error(data.message || "שגיאה לא ידועה");
       }
 
       setSubmitted(true);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError("שגיאה לא צפויה");
-      }
-}
-
-    
+    } catch (err: any) {
+      setError(err.message || "שגיאה בשליחת הנתונים");
+    }
   };
 
   return (
     <main className={styles.container}>
-      <h1 className={styles.title}>ליצירת קשר🐍</h1>
+      <h1 className={styles.title}>ליצירת קשר 🐍</h1>
       <p className={styles.subtitle}>מלאו את הפרטים ונחזור אליכם בהקדם</p>
 
       {submitted ? (
@@ -57,9 +50,10 @@ export default function RegisterPage() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className={styles.form}>
+          {error && <div className={styles.errorMessage}>{error}</div>}
+
           <label>
-            <span/>*
-            שם מלא:
+            *שם מלא:
             <input
               type="text"
               name="name"
@@ -80,8 +74,7 @@ export default function RegisterPage() {
           </label>
 
           <label>
-            <span/>*
-            טלפון:
+            *טלפון:
             <input
               type="tel"
               name="phone"

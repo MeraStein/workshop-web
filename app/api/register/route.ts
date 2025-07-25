@@ -1,21 +1,31 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
+import { neon } from '@neondatabase/serverless';
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    const data = await request.json();
+    const sql = neon(process.env.DATABASE_URL!);
+    const body = await req.json();
 
-    const { name, email, phone } = data;
+    const { name, email, phone } = body;
 
     if (!name || !phone) {
-      return NextResponse.json({ message: "נא למלא את כל השדות" }, { status: 400 });
+      return NextResponse.json(
+        { success: false, message: 'חסר שדה חובה' },
+        { status: 400 }
+      );
     }
 
-    // כאן תוכלי להוסיף לוגיקה לשליחת המייל או שמירה בבסיס נתונים
+    await sql`
+      INSERT INTO users (name, email, phone_number)
+      VALUES (${name}, ${email || null}, ${phone})
+    `;
 
-    console.log("הרשמה חדשה:", data); 
-
-    return NextResponse.json({ message: "ההרשמה התקבלה בהצלחה" }, { status: 200 });
-  } catch (error) {
-    return NextResponse.json({ message: "שגיאה בשרת" }, { status: 500 });
+    return NextResponse.json({ success: true, message: 'נשמר בהצלחה' });
+  } catch (err: any) {
+    console.error('DB ERROR:', err);
+    return NextResponse.json(
+      { success: false, message: 'שגיאה בשליחת הנתונים' },
+      { status: 500 }
+    );
   }
 }
