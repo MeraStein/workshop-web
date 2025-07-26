@@ -1,7 +1,10 @@
 "use client";
+import {TITLE, SUBTITLE, PARAGRAPHS} from "./global" 
 import Image from "next/image";
 import { useRouter } from "next/navigation"; 
 import styles from "./page.module.css";
+import Paragraphs from "./components/paragraphs/Paragraphs";
+import Register from "./components/register/Register";
 
 export default function Home() {
 
@@ -14,17 +17,17 @@ export default function Home() {
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
-        <h1>👨‍💻 לומדים פיתוח תוכנה, מגלים את האנגלית! 💬</h1>
-        <p>סדנת תכנות אמיתית לילדים – וגם שיפור אנגלית על הדרך</p>
+        <h1>👨‍💻 {TITLE} 💬</h1>
+        <p>{SUBTITLE}</p>
       </header>
 
       <div className={styles.hero}>
-        <img 
-          src="https://img.freepik.com/premium-vector/illustration-student-activity_1368420-4108.jpg?semt=ais_hybrid&w=740"
-          alt="ילדים לומדים קוד"
-        />
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhdh8ypYm1_agPI1Dy9837Ggm60HbcZPGmTA&s"
+          alt="ילדים לומדים קוד"
+        />
+        <img 
+          src="https://img.freepik.com/premium-vector/illustration-student-activity_1368420-4108.jpg?semt=ais_hybrid&w=740"
           alt="ילדים לומדים קוד"
         />
         <img
@@ -33,28 +36,29 @@ export default function Home() {
         />
       </div>
 
+      <div>
+        <Paragraphs/>
+      </div>
+
       <section className={styles.section}>
-        <h2>מה מחכה לילדים בסדנה?</h2>
+        <h2>🎯 מה מחכה לנו בסדנה?</h2>
         <ul>
-          <li>✅ יסודות תכנות ב‑Python בדרך כיפית וברורה</li>
-          <li>✅ לימוד אנגלית ברמה מותאמת לילד</li>
+          <li>✅לימוד עקרונות התכנות בשפת פייתון בדרך כיפית וברורה</li>
+          <li>✅ רכישת ידע באנגלית "על הדרך"</li>
           <li>✅ פרויקטים איכותיים – משחקים ותוכנות</li>
           <li>✅ פיתוח חשיבה לוגית ויצירתית</li>
+          <li>✅ אווירה נעימה ברוח יהודית וחסידית</li>
         </ul>
-
-        <h2>למי זה מתאים?</h2>
-        <p>
-          ילדים בגילאי <strong>8-13</strong>, ללא צורך בניסיון קודם בתכנות או
-          באנגלית
-        </p>
       </section>
 
        <div className={styles.cta}>
-          <button onClick={handleRegisterClick}>📩 רוצה שנחזור אליכם?</button>
+          {/* <button onClick={handleRegisterClick}>📩 רוצה שנחזור אליכם?</button> */}
+          {/* <h3>📩 רוצה שנחזור אליכם?</h3> */}
+          <Register/>
         </div>
 
       <footer className={styles.footer}>
-        📅 ימי ___ | 📍 מיקום: ___ | מספר המקומות מוגבל!
+       מספר המקומות מוגבל!
       </footer>
     </div>
   );
