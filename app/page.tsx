@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
-        <h1>👨‍💻 {TITLE} 💬</h1>
+        <h1>👨‍💻 {TITLE} </h1>
         <p>{SUBTITLE}</p>
       </header>
 
